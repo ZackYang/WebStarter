@@ -1,0 +1,63 @@
+{
+  "name": "yes",
+  "version": "0.1.0",
+  "description": "This project is a fast starter of a web-server, which contains Redux, React, Express, GraphQL, Webpack and Babel",
+  "main": "server/server.js",
+  "browserslist": [
+    "> 0.25%, not dead"
+  ],
+  "scripts": {
+    "start-front": "webpack-dev-server --env development --config webpack.dev.js",
+    "start-server": "cross-env nodemon server/server.js",
+    "build": "webpack --env production --config webpack.prod.js",
+    "test": "test.js"
+  },
+  "keywords": [
+    "Redux",
+    "React",
+    "Express",
+    "GraphQL",
+    "Webpack",
+    "Babel"
+  ],
+  "author": "Zack Yang",
+  "license": "MIT",
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  },
+  "dependencies": {
+    "browserslist": "^4.14.3",
+    "core-js": "2",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "dotenv-webpack": "^3.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "file-loader": "^6.1.0",
+    "graphql": "^15.3.0",
+    "lodash": "^4.17.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools": "^3.7.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
