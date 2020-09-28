@@ -1,9 +1,15 @@
 const express = require('express')
+const { Sequelize, Model, DataTypes } = require('sequelize');
+const { ApolloServer } = require('apollo-server');
+
 const app = express()
 const port = 3000
 
-app.use(express.static('dist/build'));
+const sequelize = new Sequelize('sqlite::memory:')
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+const Foo = require('./models/foo')(sequelize, DataTypes);
+const server = new ApolloServer({ typeDefs: Foo.typeDefs, resolvers: Foo.resolvers });
+
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
