@@ -11,4 +11,9 @@ module.exports = merge(common, {
     stats: 'minimal',
     publicPath: "/"
   },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm.js'
+    }
+  }
 })

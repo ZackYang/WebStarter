@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const publicPath = '/';
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -12,7 +13,8 @@ module.exports = {
       title: 'Web Starter',
       template: './src/index.html',
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new VueLoaderPlugin()
   ],
 
   output: {
@@ -24,11 +26,28 @@ module.exports = {
 
   module: {
     rules: [
-     {
-       test: /\.css$/, use: ['style-loader', 'css-loader'],
-       include: /flexboxgrid/
-       //Follow instructions at https://github.com/roylee0704/react-flexbox-grid
-     },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+         // Creates `style` nodes from JS strings
+         'style-loader',
+         // Translates CSS into CommonJS
+         'css-loader',
+         // Compiles Sass to CSS
+         'sass-loader',
+        ]
+      },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
@@ -37,6 +56,7 @@ module.exports = {
         test: /\.js|.jsx?$/,
         exclude: /(node_modules)/,
         loaders: ["babel-loader"]
-      }]
+      }
+    ]
   },
 }
